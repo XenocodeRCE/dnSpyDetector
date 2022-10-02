@@ -61,7 +61,7 @@ namespace dnSpyDetector
                 Console.WriteLine("No dnSpy hooks found!");
             }
             
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }
