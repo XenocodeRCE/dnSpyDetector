@@ -1,4 +1,4 @@
-A fork of the origional repo that adds the third dnSpy debugging hook, System.Diagnostics.Debugger
+A fork of the original repo that adds the third dnSpy debugging hook, System.Diagnostics.Debugger
 
 # dnSpyDetector
 A quick way to check for the presence of dnSpy hooks in memory
