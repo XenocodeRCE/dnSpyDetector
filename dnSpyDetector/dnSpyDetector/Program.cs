@@ -5,7 +5,6 @@ namespace dnSpyDetector
 {
     class Program
     {
-
         [System.Runtime.InteropServices.DllImport("kernel32.dll")]
         public static extern IntPtr LoadLibrary(string dllToLoad);
 
@@ -31,7 +30,6 @@ namespace dnSpyDetector
             }
 
             GetProcessId = GetProcAddress(kernel32, "CheckRemoteDebuggerPresent");
-            data = new byte[1];
             System.Runtime.InteropServices.Marshal.Copy(GetProcessId, data, 0, 1);
 
             //32-bit relative jump = opcode 0xE9
@@ -41,13 +39,11 @@ namespace dnSpyDetector
                 hookCount++;
             }
 
-
             var debuggerType = typeof(Debugger);
             System.Reflection.MethodInfo[] methods = debuggerType.GetMethods();
             var getMethod = debuggerType.GetMethod("get_IsAttached");
 
             IntPtr targetAddre = getMethod.MethodHandle.GetFunctionPointer();
-            data = new byte[1];
             System.Runtime.InteropServices.Marshal.Copy(targetAddre, data, 0, 1);
 
             if (data[0] == 0x33)
